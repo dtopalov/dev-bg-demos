@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-pipes',
   template: `
-    <input [(ngModel)]="value" #input /> {{value}}<br />
-    <button #button (click)="onClick()">Test</button>
+    <input #input /> {{value}}<br />
+    <button #button>Test</button>
     <table>
       <tr *ngFor="let item of items">
         <td>{{ item.id }}</td>
@@ -14,11 +14,11 @@ import { Subscription } from 'rxjs';
         <td>{{ item.lastName }}</td>
         <td>{{ item.city }}</td>
         <td>{{ item.title }}</td>
-        <td>{{ calculatedValue(item.id) }}</td>
+        <td>{{ item.id | myPipe }}</td>
       </tr>
     </table>
   `,
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class PipesComponent implements AfterViewInit, OnDestroy {
@@ -41,10 +41,10 @@ export class PipesComponent implements AfterViewInit, OnDestroy {
     }
 
     public ngAfterViewInit(): void {
-      // this.ngZone.runOutsideAngular(() => {
-      //   this.subs.add(this.renderer.listen(this.button.nativeElement, 'click', this.onClick));
-      //   this.subs.add(this.renderer.listen(this.input.nativeElement, 'input', this.onInput));
-      // });
+      this.ngZone.runOutsideAngular(() => {
+        this.subs.add(this.renderer.listen(this.button.nativeElement, 'click', this.onClick));
+        this.subs.add(this.renderer.listen(this.input.nativeElement, 'input', this.onInput));
+      });
     }
 
     public onClick(): void {
