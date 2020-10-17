@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+
+ul.menu {
+  list-style-type: none;
+}
+
+ul.menu li {
+  display: inline-block;
+  padding: 1em;
+  font-size: 1.2em;
+}
+
+a {
+  text-decoration: none;
+  color: navy;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: navy;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table td {
+  border: 1px solid #333;
+  padding: 6px 10px;
+}

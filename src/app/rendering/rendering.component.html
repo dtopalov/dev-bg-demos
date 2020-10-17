@@ -1,0 +1,71 @@
+<button (click)="add()">Add</button>
+<ul>Default TrackBy
+  <li *ngFor="let item of items;">{{ item | json }}</li>
+</ul>
+
+<ul>Custom TrackBy
+  <li *ngFor="let item of items; trackBy: trackItemById">{{ item | json }}</li>
+</ul>
+
+<hr />
+
+<button (click)="createItems()">Default rendering</button>
+<button (click)="clearItems()">Clear data</button>
+<button (click)="renderManually()">Manual rendering</button>
+<button (click)="clearManually()">Manual clearing</button>
+<button (click)="renderProgressively()">Progressive rendering</button>
+
+<table>
+  <tr *ngFor="let item of tableData;"
+  >
+    <td>
+      <span>{{ item.id }}</span>
+    </td>
+
+    <td>
+      <span>{{ item.firstName }}</span>
+    </td>
+
+    <td>
+      <span>{{ item.lastName }}</span>
+    </td>
+
+    <td>
+      <span>{{ item.city }}</span>
+    </td>
+
+    <td>
+      <span>{{ item.title }}</span>
+    </td>
+  </tr>
+</table>
+<table>
+  <tbody>
+    <ng-container #itemsContainer></ng-container>
+  </tbody>
+</table>
+
+<ng-template #item let-dataItem="dataItem">
+  <tr>
+     <td>
+      <span>{{ dataItem.id }}</span>
+    </td>
+
+    <td>
+      <span>{{ dataItem.firstName }}</span>
+    </td>
+
+    <td>
+      <span>{{ dataItem.lastName }}</span>
+    </td>
+
+    <td>
+      <span>{{ dataItem.city }}</span>
+    </td>
+
+    <td>
+      <span>{{ dataItem.title }}</span>
+    </td>
+  </tr>
+</ng-template>
+
