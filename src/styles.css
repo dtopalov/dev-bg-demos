@@ -35,3 +35,17 @@ table td {
   border: 1px solid #333;
   padding: 6px 10px;
 }
+
+button {
+  font-size: 1em;
+  padding: 4px;
+  border: 1px solid navy;
+  color: navy;
+  background: white;
+  margin-right: 2px;
+}
+
+button:hover {
+  color: white;
+  background: navy;
+}

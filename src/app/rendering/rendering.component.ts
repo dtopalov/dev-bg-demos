@@ -1,3 +1,4 @@
+import { DataService } from './../data.service';
 // tslint:disable: prefer-for-of
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
@@ -18,14 +19,12 @@ export class RenderingComponent {
         text: 'bar'
       }];
 
-    public data: any[] = [];
+    public data: any[] = this.dataService.data;
     public tableData: any[] = [];
 
     public trackItemById = (idx, item) => item.id;
 
-    constructor() {
-      this.data = this.createRandomData(10000);
-    }
+    constructor(private dataService: DataService) { }
 
     public createItems(): void {
       this.tableData = this.data;
@@ -69,23 +68,6 @@ export class RenderingComponent {
 
     public clearItems(): void {
         this.tableData = [];
-    }
-
-    private createRandomData(count: number): any[] {
-        // tslint:disable-next-line: one-variable-per-declaration
-        const firstNames = ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne', 'Nige'],
-              lastNames = ['Davolio', 'Fuller', 'Leverling', 'Peacock', 'Buchanan', 'Suyama', 'King', 'Callahan', 'Dodsworth', 'White'],
-              cities = ['Seattle', 'Tacoma', 'Kirkland', 'Redmond', 'London', 'Philadelphia', 'New York', 'Seattle', 'London', 'Boston'],
-              titles = ['Accountant', 'Vice President, Sales', 'Sales Representative', 'Technical Support', 'Sales Manager', 'Web Designer',
-                  'Software Developer'];
-
-        return Array(count).fill({}).map((_, idx) => ({
-            id: idx + 1,
-            firstName: firstNames[Math.floor(Math.random() * firstNames.length)],
-            lastName: lastNames[Math.floor(Math.random() * lastNames.length)],
-            city: cities[Math.floor(Math.random() * cities.length)],
-            title: titles[Math.floor(Math.random() * titles.length)]
-        }));
     }
 
     public add(): void {
