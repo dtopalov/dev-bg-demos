@@ -1,0 +1,13 @@
+<div *ngIf="data.length else singleItem">
+  <div *ngFor="let item of data">
+    <p>Id: {{ item?.id }}</p>
+    <p>Title: {{ item?.title }}</p>
+    <p>Completed: {{ item?.completed }}</p>
+    <hr />
+  </div>
+</div>
+<ng-template #singleItem>
+  <p>Id: {{ data?.id }}</p>
+  <p>Title: {{ data?.title }}</p>
+  <p>Completed: {{ data?.completed }}</p>
+</ng-template>
